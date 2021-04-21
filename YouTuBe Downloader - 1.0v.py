@@ -106,11 +106,11 @@ while True:
             
             except OSError:
                 print("Downloading...")
-                #"D:\\Download\\"
+                #"C:\Download\"
                 video.download(loca + add_sl + title.partition(" ")[0])
                 
                 thumbnail_url = open(loca + add_sl + title.partition(" ")[0] + "\\" + "( thumbnail )" + title.partition(" ")[0]  + ".txt" ,"w")
-                #d:download rico 
+                #D:download rico 
                 thumbnail_url.write("******** thumbnail ********\n")
                 thumbnail_url.write(YTvideo.thumbnail_url)
                 thumbnail_url.write("\n******** thumbnail ********")
@@ -118,7 +118,7 @@ while True:
                 break
             
             print("Downloading...")
-            #"D:\\Download\\"
+            #"C:\Download\"
             video.download(loca + add_sl + title.replace("\"", "").replace("\'","") )
             
             thumbnail_url = open(loca + add_sl + title.replace("\"", "").replace("\'","") + "\\" + "( thumbnail )" + title.replace("\"", "").replace("\'","")  + ".txt" ,"w")
@@ -150,7 +150,7 @@ while True:
         
         elif ask_Loca.lower() == "r" :
             change_loca = open("Loca.txt","w")
-            change_loca.write("D:\\Download\\")
+            change_loca.write("C:\\Download\\")
             change_loca.close()
             
         else:
