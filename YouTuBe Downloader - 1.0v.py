@@ -65,6 +65,21 @@ while True:
             check_txt = True
             add_sl = ""
             
+            #fix local download
+            try:
+                take_loca = open("Loca.txt","r")
+                
+            except FileNotFoundError:
+                change_loca = open("Loca.txt","w")
+                change_loca.write("C:\\Download\\")
+                change_loca.close()
+                
+            except:
+                
+                if check_txt == False:
+                    add_sl = "\\" + "\\"
+                else:
+                    add_sl = ""
             
             take_loca = open("Loca.txt","r")
             take_loca_edit = take_loca.readlines()
@@ -82,22 +97,7 @@ while True:
                 loca = "C:\\Download\\"
                 
             
-            #fix local download
-            try:
-                take_loca = open("Loca.txt","r")
-                
-            except FileNotFoundError:
-                change_loca = open("Loca.txt","w")
-                change_loca.write("C:\\Download\\")
-                change_loca.close()
-                
-            except:
-                
-                if check_txt == False:
-                    add_sl = "\\" + "\\"
-                else:
-                    add_sl = ""
-            
+                     
             
             #fix file download title 
             try:
