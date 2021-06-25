@@ -1,8 +1,7 @@
-# Code Changed, Optimized And Commented By: OZX-OG
-
 from pytube.cli import on_progress
 from pytube import YouTube
 from time import sleep
+import os
 print("----------------------- Welecom To YouTuBe Downloader v1.0 : creat by OZX-OG -----------------------\n")
 
 while True:
@@ -19,27 +18,30 @@ while True:
         sleep(1)
         continue
     
-    print("\nWait a second...")
+    
     YTvideo = YouTube(tbUrl, on_progress_callback = on_progress)
     
 
         
     print("\nYou Can Select You form, You can also change location Download(Press: c) ")
     ask_ex = input("(mp3 or mp4 or both, c): ")
+    
+    print("\nWait a second...")
         
     def down ():
         while True:
             
-            print("****************************** Title ****************************\n")
+            print("---------------------------- Title ----------------------------\n")
                 
             print(YTvideo.title)
                 
-            print("\n****************************** Title ****************************")
-            print("****************************** thumbnail ************************\n")
+            print("\n---------------------------- Title ----------------------------")
+            print("")
+            print("\n---------------------------- thumbnail ----------------------------\n")
                 
             print(YTvideo.thumbnail_url)
                 
-            print("\n****************************** thumbnail ************************\n")
+            print("\n---------------------------- thumbnail ----------------------------\n")
             print("")
             
             i = 1
@@ -99,7 +101,7 @@ while True:
                 loca = "C:\\Download\\"
                 
             
-                     
+            
             
             #fix file download title 
             try:
@@ -108,26 +110,34 @@ while True:
             
             except OSError:
                 print("Downloading...")
-                #"C:\Download\"
-                video.download(loca + add_sl + title.partition(" ")[0])
+                #"C:\\Download\\"
+                path = loca + add_sl + title.partition(" ")[0]
+                video.download(path)
                 
-                thumbnail_url = open(loca + add_sl + title.partition(" ")[0] + "\\" + "( thumbnail )" + title.partition(" ")[0]  + ".txt" ,"w")
-                #D:download rico 
-                thumbnail_url.write("******** thumbnail ********\n")
-                thumbnail_url.write(YTvideo.thumbnail_url)
-                thumbnail_url.write("\n******** thumbnail ********")
+                thumbnail_url = open(loca + add_sl + title.partition(" ")[0] + "\\" + "( thumbnail - link)" + title.partition(" ")[0]  + ".txt" ,"w")
+                #d:download rico 
+                thumbnail_url.write("thumbnail: "+ YTvideo.thumbnail_url)
+                thumbnail_url.write("\nLink video: "+ tbUrl)
                 thumbnail_url.close()
+            
+                open_path = os.path.realpath(path)
+                os.startfile(open_path) 
                 break
             
             print("Downloading...")
-            #"C:\Download\"
-            video.download(loca + add_sl + title.replace("\"", "").replace("\'","") )
+
+            #"C:\\Download\\"
+            path = loca + add_sl + title.replace("\"", "").replace("\'","") 
+            video.download(path)
             
-            thumbnail_url = open(loca + add_sl + title.replace("\"", "").replace("\'","") + "\\" + "( thumbnail )" + title.replace("\"", "").replace("\'","")  + ".txt" ,"w")
-            thumbnail_url.write("******** thumbnail ********\n")
-            thumbnail_url.write(YTvideo.thumbnail_url)
-            thumbnail_url.write("\n******** thumbnail ********")
+            thumbnail_url = open(loca + add_sl + title.replace("\"", "").replace("\'","") + "\\" + "( thumbnail - link )" + title.replace("\"", "").replace("\'","")  + ".txt" ,"w")
+            thumbnail_url.write("thumbnail: "+ YTvideo.thumbnail_url)
+            thumbnail_url.write("\nLink video: "+ tbUrl)
             thumbnail_url.close()
+
+            open_path = os.path.realpath(path)
+            os.startfile(open_path)
+
             break    
       
     #End download
